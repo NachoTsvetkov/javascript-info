@@ -22,7 +22,7 @@ function isEmpty(obj) {
     user.surname = "Smith";
     user.name = "Pete";
     delete user.name;
-    
+
     let salaries = {
         John: 100,
         Ann: 160,
@@ -45,30 +45,34 @@ function isEmpty(obj) {
     // };
 })();
 
-describe("multiplyNumeric", function() {
-    it("multiplies numeric properties of an object", function() {
-        
-        let menu = {
-            width: 200,
-            height: 300,
-            title: "My menu"
-        };
-
-        multiplyNumeric(menu);
-        assert.equal(menu.width, 400);
-        assert.equal(menu.height, 600);
+if (!tests['objects']) {
+    describe("multiplyNumeric", function() {
+        it("multiplies numeric properties of an object", function() {
+            
+            let menu = {
+                width: 200,
+                height: 300,
+                title: "My menu"
+            };
+    
+            multiplyNumeric(menu);
+            assert.equal(menu.width, 400);
+            assert.equal(menu.height, 600);
+        });
     });
-});
-
-describe("isEmpty", function() {
-    it("checks if new object is empty", function() {
-        let schedule = {};
-        assert.isTrue(isEmpty(schedule));
+    
+    describe("isEmpty", function() {
+        it("checks if new object is empty", function() {
+            let schedule = {};
+            assert.isTrue(isEmpty(schedule));
+        });
+    
+        it("checks if object with property is empty", function() {
+            let schedule = {};
+            schedule["8:30"] = "get up";
+            assert.isFalse(isEmpty(schedule));
+        })
     });
-
-    it("checks if object with property is empty", function() {
-        let schedule = {};
-        schedule["8:30"] = "get up";
-        assert.isFalse(isEmpty(schedule));
-    })
-});
+    
+    tests['objects'] = true;
+}

@@ -1,8 +1,8 @@
 "use strict";
 
 function getScriptPath() {
-    var file = document.getElementById("txtFile");
-    var scriptPath = "./" + file.value;
+    let file = document.getElementById("txtFile");
+    let scriptPath = "./" + file.value;
 
     return scriptPath;
 }
@@ -20,11 +20,10 @@ function handleAjaxError(jqXHR, textStatus, errorThrown) {
 }
 
 function handleAjaxSuccess() {
-    mocha.run();
 }
 
 function runScript() {
-    var scriptPath = getScriptPath();
+    let scriptPath = getScriptPath();
     
     $.ajax({
         url: scriptPath,
@@ -35,7 +34,8 @@ function runScript() {
     });
 }
 
-var btnRun = document.getElementById("btnRun");
+let btnRun = document.getElementById("btnRun");
 btnRun.onclick = runScript;
 
-var txtFile = document.getElementById("txtFile");
+let txtFile = document.getElementById("txtFile");
+let tests = [];

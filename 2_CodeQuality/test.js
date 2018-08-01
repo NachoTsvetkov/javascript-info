@@ -34,7 +34,6 @@ describe("pow", function() {
 });
 
 describe("test", function() {
-
     before(() => console.log("Testing started - before all tests"));
     after(() => console.log("Testing finished - after all tests"));
   
