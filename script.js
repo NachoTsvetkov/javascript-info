@@ -19,6 +19,10 @@ function handleAjaxError(jqXHR, textStatus, errorThrown) {
     }
 }
 
+function handleAjaxSuccess() {
+    mocha.run();
+}
+
 function runScript() {
     var scriptPath = getScriptPath();
     
@@ -27,8 +31,11 @@ function runScript() {
         dataType: "script",
         crossDomain: true,
         error: handleAjaxError,
+        success: handleAjaxSuccess,
     });
 }
 
 var btnRun = document.getElementById("btnRun");
 btnRun.onclick = runScript;
+
+var txtFile = document.getElementById("txtFile");
