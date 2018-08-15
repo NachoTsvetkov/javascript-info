@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <table id="table">
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Smith</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Pete</td>
+      <td>Brown</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Ann</td>
+      <td>Lee</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <script>
+        function shiftRows (row1, row2) {
+            table.tBodies[0].insertBefore(row2, row1);
+        }
+
+        function sort() {
+            let rows = table.rows;
+            let hasShift;
+            do {
+                hasShift = false;
+                for (let rowIndex = 1; rowIndex < rows.length - 1; rowIndex++) {
+                    const firstRow = rows[rowIndex];
+                    const firstValue = +firstRow.cells[2].firstChild.data;
+
+                    const secondRow = rows[rowIndex + 1];
+                    const secondValue = +secondRow.cells[2].firstChild.data;
+                    
+
+                    if (firstValue > secondValue) {
+                        shiftRows(firstRow, secondRow);
+                        
+                        hasShift = true;
+                    }
+                }
+            } while (hasShift);
+        }
+        sort();
+  </script>
+
+</body>
+</html>

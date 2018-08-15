@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <!-- click on this button calls clockStart() -->
+  <input type="button" onclick="clockStart()" value="Start">
+
+  <!-- click on this button calls clockStop() -->
+  <input type="button" onclick="clockStop()" value="Stop">
+  <script>
+        let clock = document.createElement('div');
+        document.body.appendChild(clock);
+
+        let hours = document.createElement('span');
+        hours.style.color = 'red';
+        clock.appendChild(hours);
+
+        let colon = document.createElement('span');
+        colon.textContent = ':';
+        clock.appendChild(colon);
+
+        let minutes = document.createElement('span');
+        minutes.style.color = 'green';
+        clock.appendChild(minutes);
+
+        let secondColon = document.createElement('span');
+        secondColon.textContent = ':';
+        clock.appendChild(secondColon);
+
+        let seconds = document.createElement('span');
+        seconds.style.color = 'blue';
+        clock.appendChild(seconds);
+
+        let timerId = -1;
+
+        function updateClock() {
+            let date = new Date();
+
+            hours.textContent = date.getHours();
+            minutes.textContent = date.getMinutes();
+            seconds.textContent = date.getSeconds();
+        }
+
+        function clockStart() {
+            timerId = setInterval(updateClock, 1000);
+        }
+
+        function clockStop(){ 
+            clearInterval(timerId);
+        }
+  </script>
+</body>
+</html>
